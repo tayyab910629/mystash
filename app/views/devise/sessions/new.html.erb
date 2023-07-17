@@ -10,11 +10,11 @@
                             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                                 <div class="mb-3">
                                     <%= f.label :email, class: "form-label" %>
-                                    <%= f.email_field :email, class: "form-control", value: "tayyab910629@gmail.com", autofocus: true, autocomplete: "email", placeholder: "info@example.com" %>
+                                    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", placeholder: "info@example.com" %>
                                 </div>
                                 <div class="mb-3">
                                     <%= f.label :password, class: "form-label" %>
-                                    <%= f.password_field :password, class: "form-control", value: "admin!@#!@#", autocomplete: "current-password", placeholder: "**********" %>
+                                    <%= f.password_field :password, class: "form-control", autocomplete: "current-password", placeholder: "**********" %>
                                 </div>
                                 <div class="mb-3">
 
