@@ -1,0 +1,75 @@
+<%=render '/devise/shared/lightheader' %>
+
+
+<section class="signin-out-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-10 col-sm-10 col-md-8 col-lg-6">
+                        <div class="form-inner">
+                            <h3 class="fs-2 fw-bold text-center mb-4">Registration</h3>
+                            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                            <div class="mb-3">
+                                <%=f.label :first_name, class: "form-label" %>
+                                <%=f.text_field :first_name, class: "form-control", placeholder:"Jone"%>
+                            </div>
+
+                             <div class="mb-3">
+                                <%=f.label :last_name, class: "form-label" %>
+                                <%=f.text_field :last_name, class: "form-control", placeholder:"Jone"%>
+                            </div>
+
+                           <div class="mb-3">
+                            <%=f.label :email, class: "form-label"%>
+                            <%=f.email_field :email, class: "form-control", placeholder: "info@gmail.com", autofocus: true%>
+                            </div>
+                            
+                             <div class="mb-3">
+                                <%=f.label :password, class:"form-label"%>
+                                <% if @minimum_password_length %>
+                                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                                <% end %>
+                                <br/>
+                                <%=f.password_field :password, class:"form-control", placeholder:"**********"%>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <%=f.label :password_confirmation, class:"form-label"%>
+                                <%=f.password_field :password_confirmation, class:"form-control",placeholder:"**********"%>
+                            </div>
+                            <!-- <div class="mb-3">
+                                <label for="formGroupCraditcard" class="form-label">Credit Card Number</label>
+                                <input type="number" class="form-control" id="formGroupCraditcard" placeholder="**** **** **** 0987">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExpiryDate" class="form-label">Expiry Date</label>
+                                <input type="month" class="form-control" id="formGroupExpiryDate" placeholder="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupCCV" class="form-label">CCV</label>
+                                <input type="number" class="form-control" id="formGroupCCV" placeholder="124">
+                            </div> -->
+
+
+                            
+
+<%= button_tag( type: 'submit', class: "btn btn-2") do %>
+                                    Register
+                                    
+                                    <% end %>
+                                    <div class="tayyab">
+                                  already have a account?  <%= render "devise/shared/links" %>
+                                    </div>
+
+                            
+                            <%end%>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+
+      
+    </body>

@@ -1,0 +1,24 @@
+.tayyab a {
+    color: #314455;
+	
+}
+
+.lightbutton a {
+
+
+    background-color: transparent;
+border-color: #333;
+        color: #333; /* You might need to set this if the link color isn't visible against the background */
+    display: inline-block; /* This and the following two lines will give the link some padding and make it more button-like */
+    
+    border-radius: 5px;
+    
+}
+
+.lightbutton a:hover {
+
+
+}
+
+
+

@@ -1,0 +1,234 @@
+<body>
+        <%=render 'devise/shared/dashboardheader'%>
+
+
+        <section class="dashboard-static">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 desktop-view">
+                        <div class="db-static-boxes">
+                            <div class="dbstatic-box">
+                             <%@totalprofit=@sold_amount-@sum%>
+
+                            <%# <%@totalprofit=0-@sum%>
+            <span><%=image_tag'np.svg', alt:'' %></span>
+                               <h4 class="fw-bold"><%= @totalprofit < 0 ? "-$#{-@totalprofit}" : "$#{@totalprofit}" %></h4>
+<span>Net Profit</span>
+
+                            </div>
+                            
+                            <div class="dbstatic-box">
+                                
+                                <span>  <%=image_tag 'as.svg', alt: '' %>  </span>
+                                <h4 class="fw-bold"><%= @sold_amount < 0 ? "-$#{-@sold_amount}" : "$#{@sold_amount}" %></h4>
+                                <span>Amount Sold</span>
+                            </div>
+
+                            <div class="dbstatic-box">
+                                
+                                <span> <%=image_tag 'ab.svg' , alt: ''%> </span>
+                                <h4 class="fw-bold"><%= @sum < 0 ? "-$#{-@sum}" : "$#{@sum}" %></h4>
+                                <span>Amount Bought</span>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <a class="btn btn-4" data-bs-toggle="modal" data-bs-target="#addtostash" href="#">Add To My Stash</a>
+                            <div class="dropdown">
+                                <button class="btn btn-5 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sell
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+  <li class="dropdown-title">Which item did you sell?</li>
+  <% @trxlist.each do |record| %>
+    <li>
+      <%= link_to edit_transaction_path(record), data: {bs_toggle: "modal", bs_target: "#itemsold_#{record.id}", record_id: record.id} do %>
+  <%= record.item_description %>
+  <%= record.id %>
+<% end %>
+    </li>
+  <% end %>
+  <li class="dropdown-newitem"><a href="#">+ Add New Item</a></li>
+</ul>
+
+                              </div>
+                        </div>
+                    </div>
+                   
+       <div class="col-sm-12 col-md-12">
+  <h4>Transactions</h4>
+  <% @trxlist.each do |record| %>
+  <div class="transactions-record">
+    <div class="transactions-items">
+      <div class="transactions-item">
+        
+        <div class="ti-left">
+          <h3><%= record.item_description %></h3>
+          <div class="tags">
+            <a href="#"><%= record.item_tag %></a>
+          </div>
+        </div>
+
+        <div class="ti-right">
+          <div class="bought-rec">
+            <span>Bought $<%= record.buying_amount %></span>
+            <span class="date"><%= record.bought_date %></span>
+          </div>
+
+          <%if record.selling_amount %>
+
+          <div class="sell-rec">
+            <span>Sold $<%=record.selling_amount%></span>
+            <span class="date"><%=record.selling_date%></span>
+          </div>
+
+          <%end%>
+
+        <%= link_to transaction_path(record), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-button" do %>
+    <%= image_tag("delete.svg", class: "delete-icon", alt: "Delete record") %>
+  <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+</div>
+ 
+                 </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+      <%=render '/devise/shared/footer'%>
+
+        <!-- Modal 1 -->
+        <div class="modal fade" id="addtostash" tabindex="-1" aria-labelledby="addtostashLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <div class="modal-form-inner form-inner pt-3">
+                            <h3 class="fs-2 fw-bold text-center mb-4">Add To My Stash</h3>
+
+                           <%=form_with(url: transactions_path ) do |form|%>
+
+                           <div class="mb-3">
+                                <%=form.label :item_description, 'Item Description', class: "form-label" %>
+                                <%=form.text_area :item_description, class: 'form-control', rows:4 , cols: 30, value:"This is text" %>
+
+                            </div>
+                           
+                    
+                           
+                            <div class="mb-3">
+                                
+                                <%=form.label :item_tag, 'Item Tag', class: "form-label" %>
+                                <%=form.text_field :item_tag, class: 'form-control', value: "Tag2"%>
+                                
+                            </div>
+
+                            <div class="mb-3">
+                                
+                                <%=form.label :bought_date,  'Bought Date',  class: "form-label"%>
+                               
+                                <%=form.date_field :bought_date, class: "form-control", placeholder: "--/--/----"%>
+                            </div>
+                            <div class="mb-3">
+                            <%=form.label :buying_amount , 'Amount Bought For' , class: "form-label"%>
+                                <%=form.number_field :buying_amount, class: "form-control" ,value: "555" %>
+                                
+                            </div>
+                            <div class="mb-3">
+                                <div class="another-item">
+                                   
+                                    <%=image_tag 'plus-circle.svg', alt:""%>Add Another Item
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                 <%= button_tag( type: 'submit', class: "btn btn-2") do %>
+                                    Submit
+                                    <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<%end%>
+
+       
+
+        <!-- Modal 2 -->
+        <% @trxlist.each do |record| %>
+        <div class="modal fade" id="itemsold_<%= record.id %>" tabindex="-1" aria-labelledby="itemsoldLabel" aria-hidden="true">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-body">
+                        <div class="modal-form-inner form-inner pt-3">
+                            <h3 class="fs-2 fw-bold text-center mb-4">Item Sold</h3>
+                            <div class="mb-3">
+                                <label class="form-label">Item Sold</label>
+                                
+                                <p style="color: #000;">
+
+                                </p>
+                            </div>
+                            <%= form_with(model: record, method: :patch, local: true, html: { id: "transaction_form_#{record.id}" }) do |form| %>
+
+
+                            <div class="mb-3">
+    <label for="formGroupitemtagc" class="form-label">Date Sold</label>
+    <%= form.date_field :selling_date, id: 'formGroupitemtagc', class: 'form-control' %>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupitemtagc" class="form-label">Amount Sold For</label>
+    <%= form.number_field :selling_amount, id: 'formGroupitemtagc', class: 'form-control' %>
+  </div>
+ <div class="mb-3">
+                                <label for="formGroupitemtagc" class="form-label">Place Sold</label>
+                                <select class="form-select form-control" aria-label=".form-select-lg example">
+                                    <option selected></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                  </select>
+                            </div>
+                            <div class="mb-3">
+                                <div class="info-sold-for">
+                                    <span>Your Fee: 12%</span>
+                                    <span class="big">Your Net Sale: $523.85</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-2">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<%end%>
+<%end%>
+        <!-- Javascript files -->
+
+
+<script>
+
+$('a[data-bs-toggle="modal"]').click(function() {
+    var recordId = $(this).data('record-id'); // retrieve record id from clicked link
+    // make AJAX request with recordId to get transaction details
+});
+
+
+</script>
+    </body>

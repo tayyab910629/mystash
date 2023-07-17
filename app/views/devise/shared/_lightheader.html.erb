@@ -1,0 +1,39 @@
+<header class="site-header headerWrap">
+            <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+                <div class="container">
+                   
+
+                    <%=link_to root_path , class: 'navbar-brand' do %>
+                    <%=image_tag 'logo.svg', alt: ''%>
+                    <%end%>
+
+
+
+
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarcardstash" aria-controls="navbarcardstash" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-end" id="navbarcardstash">
+                        
+
+                        <%=link_to 'Free 7 Day Trial', '#', class: 'btn btn-2' %>
+                        
+                        <%# <%=link_to 'Log in' , new_user_session_path , class: 'btn btn-3 lightbutton'%>
+                        <div class="lightbutton">
+                        <%=link_to 'Log in' , new_user_session_path , class: 'lightbutton btn btn-3'%>
+                        </div>
+                        <%if current_user %>
+                        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-3' %>
+                        
+                        <%end%>
+                        
+                         
+
+                        
+                    </div>
+                </div>
+            </nav>
+        </header>

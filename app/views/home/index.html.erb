@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <%# <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="fonts/proxima/stylesheet.css">
+        <link rel="stylesheet" href="css/main.css"> %>
+
+        <title>CardStash</title>
+    </head>
+    <body>
+        <%=render '/devise/shared/header' %>
+        <section class="hero-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <div class="hero-inner-text">
+                            <h1>Tracking Trading Card Investments Made Easy</h1>
+                            <p>Your ability to track all of your sales and purchases of trading cards has never been easier. Track your card stash every day and see how your investment is paying off!</p>
+                            <a class="btn btn-1" href="#">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="hero-media-section">
+                            <span class="media-round">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                            
+                            <%=image_tag 'mobile-app-screenshot-2.svg', alt: ''%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="feature-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="fw-bold fs-1">How To Use CardStash</h2>
+                        <p>CardStash is a simple and easy to use trading card investment tracking se</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="single-feature-item">
+                          
+                            <%=link_to '#' do %>
+                            <%image_tag 'feature-1.svg', alt: ''%>
+                            <%end%>
+                            <h4>Add To Your Stash</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="single-feature-item">
+                            <%= link_to '#' do %>
+  <%= image_tag 'feature-2.svg', alt: '' %>
+<% end %>
+
+                            
+                            <h4>Track Your Sales</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="single-feature-item">
+                            
+                            <%=link_to '#' do%>
+                            <%image_tag 'feature-3.svg' , alt: ''%>
+                            <%end%>
+                            <h4>Track Your Investment</h4>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pricing-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-7">
+                        <div class="pricing-media">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                           
+                            <%=image_tag 'mobile-app-screenshot.svg' , alt: ''%>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-5">
+                        <div class="pricing-text">
+                            <h2 class="fw-bold fs-1">Our Pricing Plan</h2>
+                            <ul>
+                                <li>Track Your Purchases & Sales</li>
+                                <li>Track Your Net Profit</li>
+                                <li>7 Day Free Trial</li>
+                            </ul>
+                            <div class="pricing fs-2 fw-bold"><span class="fs-1">$9</span> per month</div>
+                            
+                            <%=link_to 'Get Started', '#', class: 'btn btn-1'%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="whyuseus-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="whyuse-content">
+                            <h3 class="fw-bold fs-1 mb-4">Why Use CardStash?</h3>
+                            <p class="mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </p>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-5 offset-lg-2">
+                        <div class="whyus-content">
+                           
+                            <%=image_tag 'whyuselogo.svg',alt: '' %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+      
+      <%=render '/devise/shared/footer' %>
+
+        <!-- Javascript files -->
+      
+    </body>
+</html>
