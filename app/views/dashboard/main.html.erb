@@ -39,6 +39,8 @@
                                     Sell
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+<!-- Selling Drop Down Loop to edit the Record -->
   <li class="dropdown-title">Which item did you sell?</li>
   <% @trxlist.each do |record| %>
     <li>
@@ -56,8 +58,15 @@
                     </div>
                    
        <div class="col-sm-12 col-md-12">
+
+       <!-- Transaction Record coming from here -->
+
   <h4>Transactions</h4>
-  <% @trxlist.each do |record| %>
+  <%if @number==1%>
+
+
+
+ <% @trxlist.each do |record| %>
   <div class="transactions-record">
     <div class="transactions-items">
       <div class="transactions-item">
@@ -80,9 +89,11 @@
           <div class="sell-rec">
             <span>Sold $<%=record.selling_amount%></span>
             <span class="date"><%=record.selling_date%></span>
-          </div>
+          </div >
+        
 
           <%end%>
+        
 
         <%= link_to transaction_path(record), method: :delete, data: { confirm: "Are you sure?" }, class: "delete-button" do %>
     <%= image_tag("delete.svg", class: "delete-icon", alt: "Delete record") %>
@@ -93,6 +104,14 @@
     </div>
   </div>
 <% end %>
+
+
+
+ 
+  <% else %>
+  <p> No Transaction Availabe</p>
+  <%end%>
+ 
 
 </div>
  

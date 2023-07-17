@@ -4,6 +4,10 @@ class DashboardController < ApplicationController
     @trxlist=current_user.transactions.reverse_order
     @sum=current_user.transactions.sum(:buying_amount)
     @sold_amount=current_user.transactions.sum (:selling_amount)
+
+    if @trxlist.present?
+      @number=1
+    end
     # @transaction = @trxlist.first
     
   
