@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
 
     @trx = current_user.transactions.new(data)
     if @trx.save
-      redirect_to dashboard_path
+      redirect_to dashboard_path, notice: 'Transaction was successfully updated.'
     end
   end
 
