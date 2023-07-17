@@ -50,8 +50,8 @@ h6 {
 }
 
 .btn-2:hover {
-	background-color: rgb(49 68 85 / 80%);
-	color: #fff;
+    background-color: rgba(49, 68, 85, 0.8);
+    color: #fff;
 }
 
 .btn-3 {
